@@ -1,0 +1,539 @@
+<head>
+  <title> Messi | Athlete Portfolio </title>
+</head>
+
+  <style>
+    {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /*Navigation Bar*/
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 12px 0;
+      z-index: 1;
+    }
+
+    .nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    .nav a.active {
+      color: #ec4899;
+      border-bottom: 2px solid #ec4899;
+      padding-bottom: 4px;
+    }
+
+    
+
+    .bg {
+      position: relative;
+      height: 100vh;
+      background: url('https://images2.alphacoders.com/132/1327935.jpeg')
+        no-repeat center;
+      background-size: cover;
+      background-attachment: fixed;
+      text-align: center;
+      color: white;
+      padding-top: 200px; /*text go downward*/
+    }
+
+    .bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(245, 163, 199, 0.25),
+        rgba(0, 0, 0, 0.7)
+      );
+     z index=0; /*overlay behind text*/
+    }
+
+    .bg * {
+      position: relative;
+      z index=1;
+    }
+
+    .box {
+      display: inline-block;
+      margin: 20px;
+    }
+
+    .num {
+      font-size: 32px;
+      font-weight: 700;
+      color: #f5a3c7;
+    }
+
+    
+    section {
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+        
+
+    /* ================= TIMELINE ================= */
+    .careercollage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.careercard {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+   }
+
+.careercard img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.careercard h3 {
+  margin: 15px 0 5px;
+}
+
+.careercard p {
+  padding: 0 15px 20px;
+  color: #ec4899;
+}
+
+.careercard:hover {
+  transform: translateY(-10px);
+}
+
+
+    
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      width: 180px;
+      border-radius: 18px;
+      border-top: 4px solid #f5a3c7;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    
+    .chart {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 40px;
+      height: 200px;
+      margin-top: 40px;
+    }
+
+    .fill {
+      width: 50px;
+      background: #f5a3c7;
+      border-radius: 6px;
+    }
+
+    .fill:hover {
+      background: #ec4899;
+    }
+
+    .bar {
+  text-align: center;
+  font-size: 14px;
+}
+
+.fill {
+  width: 50px;
+  background: #f5a3c7;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.fill:hover {
+  background: #ec4899;
+}
+
+/* Chart values (relative heights) */
+.titles {
+  height: 140px;   /* 45 titles */
+}
+
+.goals {
+  height: 180px;   /* 800+ goals (highest) */
+}
+
+.ballon {
+  height: 80px;    /* 8 Ballon d'Or */
+}
+
+
+    /* ================= GALLERY ================= */
+    /* ===== COLLAGE GALLERY ===== */
+.gallery {
+  column-count: 4;
+  column-gap: 16px;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    column-count: 1;
+  }
+}
+
+.media {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.media:hover {
+  transform: scale(1.03);
+}
+
+.media img,
+.media video {
+  width: 100%;
+  display: block;
+}
+
+
+    /* ================= MODAL ================= */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #modalContent img,
+    #modalContent video {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    #close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ================= SOCIAL ================= */
+    .social-links a {
+      margin: 10px;
+      padding: 10px 20px;
+      background: #111827;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .social-links a:hover {
+      background: #ec4899;
+    }
+
+    /* ================= DARK MODE ================= */
+    .dark {
+      background: #0f0f0f;
+      color: #e5e7eb;
+    }
+
+    .dark .nav {
+      background: rgba(0,0,0,0.85);
+    }
+
+    .dark .card,
+    .dark .media,
+    .dark .event {
+      background: #161616;
+      color: white;
+    }
+
+    /* ================= TOGGLE ================= */
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+
+
+<body>
+
+  <div class="nav">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#timeline" class="nav-link">Timeline</a>
+    <a href="#stats" class="nav-link">Stats</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#social" class="nav-link">Social</a>
+  </div>
+
+  <div class="bg" id="home">
+    <h1>Lionel Messi</h1>
+    <p>Inter Miami</p>
+
+    <div class="box">
+      <div class="num">47</div>
+      <p>Team Trophies</p>
+    </div>
+    <div class="box">
+      <div class="num">8</div>
+      <p>Ballon d'Or</p>
+    </div>
+    <div class="box">
+      <div class="num">511M</div>
+      <p>Instagram Followers</p>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>The greatest footballer of his generation.</p>
+  </section>
+
+  <section id="timeline">
+  <h2>Timeline</h2>
+  <p class="subtitle">Defining moments & trophies</p>
+
+  <div class="careercollage">
+
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm5.jpeg">
+      <h3>2000-La Masia</h3>
+      <p>Joins La Masia and rises through the youth team</p>
+    </div>
+
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm6.jpeg">
+      <h3>2006</h3>
+      <p>FC Barcelona Debut</p>
+    </div>
+
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm7.jpg">
+      <h3>2006</h3>
+      <p>First UCL Title</p>
+    </div>
+
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm8.jpeg">
+      <h3>2009</h3>
+      <p>Treble</p>
+    </div>
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm9.jpeg">
+      <h3>2009</h3>
+      <p>First Ballon d'or</p>
+    </div>
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm10.jpeg">
+      <h3>2012</h3>
+      <p>Record Breaking 91 goals in a single season</p>
+    </div>
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm11.jpeg">
+      <h3>2014</h3>
+      <p>Reached The World Cup Final 2014</p>
+    </div>
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm12.jpeg">
+      <h3>2015</h3>
+      <p>Second Treble</p>
+    </div>
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm13.jpeg">
+      <h3>2022</h3>
+      <p>2022 World Cup glory</p>
+    </div>
+    <div class="careercard">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\lm14.jpeg">
+      <h3>2023</h3>
+      <p>8th Ballon d'or</p>
+    </div>
+    
+</div>
+  
+</section>
+
+
+  <section id="stats">
+    <h2>Stats & Achievements</h2>
+    <div class="cards">
+      <div class="card">47<br>Titles</div>
+      <div class="card">890+<br>Goals</div>
+      <div class="card">8<br>Ballon d'or</div>
+    </div>
+
+
+
+
+
+
+    <div class="chart">
+      <div class="bar">
+    <div class="fill titles"></div>
+    <p><strong>Titles</strong><br>47</p>
+  </div>
+
+  <div class="bar">
+    <div class="fill goals"></div>
+    <p><strong>Goals</strong><br>890+</p>
+  </div>
+
+  <div class="bar">
+    <div class="fill ballon"></div>
+    <p><strong>Ballon d'Or</strong><br>8</p>
+  </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+  <h2>Gallery</h2>
+
+  <div class="gallery">
+
+    <div class="media">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\leomessi_gallery1.jpeg" onclick="openModal(this)">
+    </div>
+
+    <div class="media">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\leomessi2.jpeg" onclick="openModal(this)">
+    </div>
+
+
+    <div class="media">
+      <img src="C:\Users\tanus\OneDrive\WEB DEV 2\leomessi4.jpeg" onclick="openModal(this)">
+    </div>
+
+    <div class="media">
+      <img src=https://messi.com/wp-content/uploads/2025/11/30ea8ca8-985f-4cbf-b44c-3ad16ee71674-scaled.jpeg onclick="openModal(this)">
+    </div>
+
+    <div class="media">
+      <img src=https://messi.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-05-at-11.22.27.jpeg onclick="openModal(this)">
+    </div>
+
+  </div>
+</section>
+
+
+  <section id="social">
+  <h2>Social & Fan Engagement</h2>
+
+  <div class="social-links">
+    <a href="https://www.instagram.com/leomessi/" target="_blank">Instagram</a>
+    <a href="https://twitter.com/TeamMessi" target="_blank">Twitter (X)</a>
+      </div>
+<h3>Instagram Updates</h3>
+
+<iframe 
+  src="https://www.instagram.com/leomessi/embed"
+  width="320"
+  height="400"
+  frameborder="0"
+  scrolling="no"
+  allowtransparency="true">
+</iframe>
+
+
+  <button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+  <div id="modal">
+    <span id="close" onclick="closeModal()">✖</span>
+    <div id="modalContent"></div>
+  </div>
+</section>
+
+<script>
+  function openModal(el) {
+    const modal = document.getElementById("modal");
+    const content = document.getElementById("modalContent");
+    content.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = el.src;
+    content.appendChild(img);
+    modal.style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+
+  function toggleMode() {
+    document.body.classList.toggle("dark");
+  }
+
+  const sections = document.querySelectorAll("section, .hero");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(sec => {
+      if (scrollY >= sec.offsetTop - 150) {
+        current = sec.id;
+      }
+    });
+    navLinks.forEach(a => {
+      a.classList.remove("active");
+      if (a.getAttribute("href") === "#" + current) {
+        a.classList.add("active");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
